@@ -1,10 +1,18 @@
 pipeline {
-    agent { docker { image 'maven:3.9.11-eclipse-temurin-21-alpine' } }
+    agent { docker { 
+        image 'maven:3.9.11-eclipse-temurin-21-alpine'
+        args '-v /root/.m2:/root/.m2'
+    } }
     stages {
         stage('build') {
             steps {
                 sh 'mvn clean package -DskipTests'
             }
         }
+        stage('run') {
+            steps {
+                sh 'java -jar target/JTest-1.0.jar'
+    }
+}
     }
 }
