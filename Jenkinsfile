@@ -1,13 +1,11 @@
 pipeline {
-    agent { 
-      docker { 
-        image 'maven:3.9.11-eclipse-temurin-21-alpine' 
-      } 
+    agent {
+        docker { image 'node:24.11.1-alpine3.22' }
     }
     stages {
-        stage('build') {
+        stage('Test') {
             steps {
-                sh 'mvn --version'
+                sh 'node --eval "console.log(process.platform,process.env.CI)"'
             }
         }
     }
