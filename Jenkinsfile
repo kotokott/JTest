@@ -12,7 +12,7 @@ pipeline {
         }
         stage('run') {
             steps {
-                sh 'java -jar target/JTest-1.0.jar'
+                sh 'java -jar target/JTest-1.0-jar-with-dependencies.jar'
             }
         }
     }
